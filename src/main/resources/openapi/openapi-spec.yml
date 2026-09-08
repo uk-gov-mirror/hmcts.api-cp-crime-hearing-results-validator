@@ -325,6 +325,22 @@ components:
           description: >-
             True if this offence is convicted (guilty plea, finding of guilt, or a recorded date
             of conviction). When true the CTL missing check (DR-CTL-001) is suppressed.
+        bailStatus:
+          type: string
+          enum:
+            - A
+            - B
+            - C
+            - D
+            - F
+            - I
+            - L
+            - P
+            - R
+            - S
+            - U
+            - V
+          description: Bail status of the defendant
 
     DraftValidationResponse:
       type: object

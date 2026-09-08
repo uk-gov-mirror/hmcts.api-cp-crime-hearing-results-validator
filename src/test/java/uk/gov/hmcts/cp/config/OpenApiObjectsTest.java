@@ -132,7 +132,7 @@ class OpenApiObjectsTest {
     void generated_offence_dto_should_have_expected_fields() {
         assertThat(OffenceDto.class).hasDeclaredFields(
                 "offenceId", "offenceCode", "offenceTitle", "hasActiveElectronicMonitoring", "orderIndex", "caseUrn",
-                "hasExistingCtlRecord", "isConvicted"
+                "hasExistingCtlRecord", "isConvicted", "bailStatus"
         );
     }
 
@@ -140,6 +140,18 @@ class OpenApiObjectsTest {
     void generated_offence_dto_ctl_fields_should_be_boolean() throws Exception {
         assertThat(OffenceDto.class.getDeclaredField("hasExistingCtlRecord").getType()).isEqualTo(Boolean.class);
         assertThat(OffenceDto.class.getDeclaredField("isConvicted").getType()).isEqualTo(Boolean.class);
+    }
+
+    @Test
+    void generated_offence_dto_bail_status_enum_should_have_expected_count() {
+        assertThat(OffenceDto.BailStatusEnum.values()).hasSize(12);
+    }
+
+    @Test
+    void generated_offence_dto_bail_status_enum_should_contain_all_expected_values() {
+        assertThat(OffenceDto.BailStatusEnum.values())
+                .extracting(OffenceDto.BailStatusEnum::getValue)
+                .containsExactlyInAnyOrder("A", "B", "C", "D", "F", "I", "L", "P", "R", "S", "U", "V");
     }
 
     @Test
