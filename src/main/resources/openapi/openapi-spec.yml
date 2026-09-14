@@ -294,6 +294,7 @@ components:
       type: object
       required:
         - offenceId
+        - defendantId
         - offenceCode
         - offenceTitle
       properties:
@@ -341,6 +342,13 @@ components:
             - U
             - V
           description: Bail status of the defendant
+        defendantId:
+          type: string
+          minLength: 1
+          pattern: '\S+'
+          description: >-
+            Required owning defendant identifier.
+            Must be supplied for every offence, including offences without result lines.
 
     DraftValidationResponse:
       type: object
